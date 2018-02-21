@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
 import constants from "./Components/Constants";
 import LandingPage from "./Components/LandingPage";
 import Sidewalk from "./Components/Sidewalk";
+import Map from "./Components/Map";
 import $ from 'jquery';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
             this.handleFormSubmit(item);
           }}
         />
+        <Map />
       </div>
     );
   }
