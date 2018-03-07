@@ -1,5 +1,5 @@
 '''
-By Harshitha Akkaraju 2018
+By Harshitha Akkaraju and Kevin Chang 2018
 
 Run with Python 3.5
 
