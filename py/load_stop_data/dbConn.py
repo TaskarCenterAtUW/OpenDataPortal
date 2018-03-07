@@ -77,6 +77,8 @@ except:
 
 print("This will take a while...")
 
+# Note: This algorithm was implemented by Kevin Chang
+
 # Seattle's center coordinate
 center = [-122.329237, 47.610541]
 
