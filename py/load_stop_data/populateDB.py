@@ -6,6 +6,7 @@ Run with Python 3.5
 This program contains methods to create a new table and populate the bus stop data
 
 Make sure you replace the database login credentials (search for TODO)
+
 '''
 
 import pymysql

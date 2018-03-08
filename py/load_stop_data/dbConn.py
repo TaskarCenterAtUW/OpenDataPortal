@@ -6,12 +6,8 @@ Run with Python 3.5
 This program loads and cleans the raw bus stop data and populates it into
 a new table.
 
-<<<<<<< HEAD
 Make sure to follow the set up instructions in the README.md file
-=======
-Follow the instructions in the README.md file!
 
->>>>>>> c27ff2f... Added documentation and other files
 '''
 
 import pymysql
