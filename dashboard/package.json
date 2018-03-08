@@ -6,6 +6,7 @@
     "jquery": "^3.3.1",
     "mapbox-gl": "^0.44.1",
     "mapbox-gl-geocoder": "^2.0.1",
+    "nomnom": "^1.8.1",
     "react": "^16.2.0",
     "react-beautiful-dnd": "^5.0.0",
     "react-dom": "^16.2.0",

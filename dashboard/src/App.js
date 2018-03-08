@@ -35,9 +35,9 @@ class App extends Component {
       })
       .then((json) => {
         var sidewalks = new Set();
-        for (var i = 0; i < json.features.length; i ++) {
+        for (var i = 0; i < json.features.length; i++) {
           var sidewalkSegment = json.features[i].geometry.paths[0];
-          for (var j = 0; j < sidewalkSegment.length; j ++) {
+          for (var j = 0; j < sidewalkSegment.length; j++) {
             var long = sidewalkSegment[j][0];
             var lat = sidewalkSegment[j][1];
             if (long >= myLong - 0.005 && long <= myLong + 0.005 && lat >= myLat - 0.005 && lat <= myLat + 0.005) {
@@ -49,7 +49,7 @@ class App extends Component {
       })
       .catch((error) => {
         console.log(error);
-      }); 
+      });
   }
 }
 
