@@ -5,7 +5,6 @@ import LandingPage from "./Components/LandingPage";
 import Sidewalk from "./Components/Sidewalk";
 import Map from "./Components/Map";
 import Sidebar from "./Components/Sidebar";
-import $ from 'jquery';
 
 class App extends Component {
   render() {

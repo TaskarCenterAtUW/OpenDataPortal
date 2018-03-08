@@ -28,6 +28,10 @@ class Sidebar extends Component {
           </div>
         );
       }
+
+      handleSubmit() {
+          console.log('m');
+      }
 }
 
 export default Sidebar;
