@@ -4,13 +4,14 @@ import constants from "./Components/Constants";
 import LandingPage from "./Components/LandingPage";
 import Sidewalk from "./Components/Sidewalk";
 import Map from "./Components/Map";
+import Sidebar from "./Components/Sidebar";
 import $ from 'jquery';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Router>
+        {/*<Router>
           <Switch>
             <Route exact path={constants.routes.home} component={LandingPage} />
           </Switch>
@@ -19,8 +20,9 @@ class App extends Component {
           onFormSubmit={(item) => {
             this.handleFormSubmit(item);
           }}
-        />
+        />*/}
         <Map />
+        <Sidebar />
       </div>
     );
   }
