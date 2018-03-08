@@ -86,8 +86,8 @@ def insert(row):
                  row["SidewalkId"] + "', '" + row["StopStatus"] + "', '" + row["AccessibilityLevel"]
                  + "', '" + row["AdaLandingPad"] + "', '" + row["WalkwaySurface"] + "', '" +
                  row["Awning"] + "', '" + row["Curb"] + "', " + row["CurbHeight"] + ", '" +
-                 bay + "', '" + row["FareZone"] + "')\n")
-    fh.write(insertRow)
+                 bay + "', '" + row["FareZone"] + "')")
+    fh.write(insertRow + ";\n")
     try:
         cursor.execute(insertRow)
         connection.commit()
