@@ -7,7 +7,8 @@ body {
 
 #sidebar {
   width: 20vw;
-  height: 100vh;
+  height: 100%;
+  padding-top: 4%;
 }
 
 #instructions {
@@ -26,13 +27,13 @@ label {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 #heading {
-  padding-top: .5%;
+  padding-top: 1.5%;
   padding-bottom: .5%;
-  margin-bottom: 0%;
+  margin-bottom: .75%;
 }
 
 nav .container {
@@ -41,7 +42,7 @@ nav .container {
 }
 
 .desc {
-  width: 100%;
+  width: 80%;
   margin-bottom: 0%;
   padding-top: 2%;
 }
@@ -53,4 +54,12 @@ nav .container {
 
 #submit {
   width: 100%;
+}
+
+#navbar {
+  z-index: 0;
+}
+
+.param {
+  width: 20%;
 }
