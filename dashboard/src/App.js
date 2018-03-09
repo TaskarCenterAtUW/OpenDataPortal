@@ -11,16 +11,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/*<Router>
-          <Switch>
-            <Route exact path={constants.routes.home} component={LandingPage} />
-          </Switch>
-        </Router>
-        <Sidewalk
-          onFormSubmit={(item) => {
-            this.handleFormSubmit(item);
-          }}
-        />*/}
         <Map />
         <NavBar/>
         <Sidebar />
