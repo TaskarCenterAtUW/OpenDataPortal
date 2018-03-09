@@ -8,18 +8,22 @@ import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 
 class Sidebar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { profile: 'User Profile' };
+    }
     render() {
-        let profileOptions = ["Manual Wheelchair", "Power Wheelchair", "Cane"]
+        let profileOptions = ["Select...", "Manual Wheelchair", "Power Wheelchair", "Cane"]
         return (
             <div id="sidebar" className="bg-light">
                 <ListGroup>
                     <ListGroupItem className="bg-light">
                         <p className="text-info">Select User Profile</p>
                         <ButtonToolbar id="userprofile">
-                            <DropdownButton title="User Profile" id="dropdown-size-medium">
+                            <DropdownButton title={this.state.profile} id="dropdown-size-medium">
                                 {
                                     profileOptions.map(option => {
-                                        return (<MenuItem key={option}>{option}</MenuItem>)
+                                        return (<MenuItem key={option} onSelect={() => this.setState({profile: option})}>{option}</MenuItem>)
                                     })
                                 }
                             </DropdownButton>
