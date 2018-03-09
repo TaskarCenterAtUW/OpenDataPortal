@@ -60,7 +60,7 @@ class Map extends Component {
     };
   
     return (
-      <div style={style} ref={el => this.mapContainer = el} />
+      <div id="map" style={style} ref={el => this.mapContainer = el} />
     );
   }
 }

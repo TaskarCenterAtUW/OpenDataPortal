@@ -12,8 +12,8 @@ class App extends Component {
     return (
       <div>
         <Map />
-        <NavBar/>
         <Sidebar />
+        <NavBar />
       </div>
     );
   }
