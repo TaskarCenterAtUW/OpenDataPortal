@@ -8,18 +8,22 @@ import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 
 class Sidebar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { profile: 'User Profile' };
+    }
     render() {
-        let profileOptions = ["Manual Wheelchair", "Power Wheelchair", "Cane"]
+        let profileOptions = ["Select...", "Manual Wheelchair", "Power Wheelchair", "Cane"]
         return (
             <div id="sidebar" className="bg-light">
                 <ListGroup>
                     <ListGroupItem className="bg-light">
                         <p className="text-info"><b>Select User Profile</b></p>
                         <ButtonToolbar id="userprofile">
-                            <DropdownButton title="User Profile" id="dropdown-size-medium">
+                            <DropdownButton title={this.state.profile} id="dropdown-size-medium">
                                 {
                                     profileOptions.map(option => {
-                                        return (<MenuItem key={option}>{option}</MenuItem>)
+                                        return (<MenuItem key={option} onSelect={() => this.setState({profile: option})}>{option}</MenuItem>)
                                     })
                                 }
                             </DropdownButton>
@@ -31,17 +35,17 @@ class Sidebar extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="d-flex item">
                                 <label className="desc">Criminal Incident Reports</label>
-                                <input type="number" className="form-control param" id="criminal-incidents" placeholder="0.5" />
+                                <input type="number" step="0.1" max='1' min='0' className="form-control param" id="criminal-incidents" placeholder="0.5" />
                             </div>
                             <div className="d-flex item">
                                 <label className="desc">Public transport (bus stops)</label>
-                                <input type="number" className="form-control param" id="public-transports" placeholder="0.4" />
+                                <input type="number" step="0.1" max='1' min='0' className="form-control param" id="public-transports" placeholder="0.4" />
                             </div>
                             <div className="d-flex item">
                                 <label className="desc">Green Spaces</label>
-                                <input type="number" className="form-control param" id="green-spaces" placeholder="0.1" />
+                                <input type="number" step="0.1" max='1' min='0' className="form-control param" id="green-spaces" placeholder="0.1" />
                             </div>
-                            <button id="submit" type="submit" value="Submit" className="btn btn-info">Submit</button>
+                            <button id="submit" type="submit" value="Submit" min='0' className="btn btn-info">Submit</button>
                         </form>
                     </ListGroupItem>
                 </ListGroup>
