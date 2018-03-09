@@ -55,8 +55,8 @@ class Map extends Component {
       position: 'absolute',
       top: 0,
       bottom: 0,
-      left: '20%',
-      width: '80vw'
+      left: '25%',
+      width: '75vw'
     };
   
     return (
