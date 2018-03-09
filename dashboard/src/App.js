@@ -5,6 +5,7 @@ import LandingPage from "./Components/LandingPage";
 import Sidewalk from "./Components/Sidewalk";
 import Map from "./Components/Map";
 import Sidebar from "./Components/Sidebar";
+import NavBar from "./Components/NavBar"
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           }}
         />*/}
         <Map />
+        <NavBar/>
         <Sidebar />
       </div>
     );
