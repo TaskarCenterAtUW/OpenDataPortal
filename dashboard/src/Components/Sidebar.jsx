@@ -14,7 +14,7 @@ class Sidebar extends Component {
             <div id="sidebar" className="bg-light">
                 <ListGroup>
                     <ListGroupItem className="bg-light">
-                        <p className="text-info">Select User Profile</p>
+                        <p className="text-info"><b>Select User Profile</b></p>
                         <ButtonToolbar id="userprofile">
                             <DropdownButton title="User Profile" id="dropdown-size-medium">
                                 {
@@ -26,7 +26,7 @@ class Sidebar extends Component {
                         </ButtonToolbar>
                     </ListGroupItem>
                     <ListGroupItem className="bg-light">
-                        <p className="text-info">Choose your preferences</p>
+                        <p className="text-info"><b>Choose your preferences</b></p>
                         <p className="text-muted"><i>Assign a weight to each factor (between 0 to 1). The weights must add upto 1.</i></p>
                         <form onSubmit={this.handleSubmit}>
                             <div className="d-flex item">
