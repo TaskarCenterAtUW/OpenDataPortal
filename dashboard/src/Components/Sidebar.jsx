@@ -10,10 +10,10 @@ import { ListGroupItem } from 'react-bootstrap';
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-        this.state = { profile: 'User Profile' };
+        this.state = { profile: 'Select' };
     }
     render() {
-        let profileOptions = ["Select...", "Manual Wheelchair", "Power Wheelchair", "Cane"]
+        let profileOptions = ["Select", "Manual Wheelchair", "Power Wheelchair", "Cane"]
         return (
             <div id="sidebar" className="bg-light">
                 <ListGroup>
