@@ -1,6 +1,6 @@
 (function() {
-	function algorithm() {
-		var rate = (criminal(5) + tree(100) + bustop(5)) / 3;
+	function algorithm(criminalIput, treeInput, bustopInput) {
+		var rate = (criminal(criminalIput) + tree(treeInput) + bustop(bustopInput)) / 3;
 	}
 
 	function criminal(input) {
