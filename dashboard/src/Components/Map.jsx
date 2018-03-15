@@ -75,11 +75,11 @@ class Map extends Component {
       });
     });
   }
-  
+
   componentWillUnmount() {
     map.remove();
   }
-  
+
   render() {
     return (
       <div id="map" ref={el => this.mapContainer = el} />
