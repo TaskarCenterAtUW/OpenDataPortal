@@ -53,6 +53,10 @@ class Sidebar extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
+        let cache = window.localStorage;
+        cache.setItem("incidents", this.state.incidents);
+        cache.setItem("transport", this.state.transport);
+        cache.setItem("trees", this.state.trees);
     }
 }
 
