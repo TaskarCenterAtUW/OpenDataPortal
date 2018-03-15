@@ -14,9 +14,6 @@ class Sidebar extends Component {
         this.state = { profile: 'Select' };
     }
     render() {
-        // TODO: Move this to a more appropriate place
-        parseData();
-        console.log(result);
         
         let profileOptions = ["Select", "Manual Wheelchair", "Power Wheelchair", "Cane"];
         return (
