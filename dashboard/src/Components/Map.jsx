@@ -1,11 +1,36 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from 'mapbox-gl-geocoder';
+import { parseData } from '../getData';
+import { result } from '../getData';
+
+import { parseData } from '../getData';
+import { result } from '../getData';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFuZXNoc3UiLCJhIjoiY2pkamZpbzZ3MW0ycTJ6cmxtNnJhZ2k4ZCJ9.bzJJ_dSQlZefW6kWSSjlzw';
 var map;
 
 class Map extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
+  getData() {
+    parseData();
+        setTimeout(() => {
+            console.log(result["collection"]);
+            this.setState({
+                collection: result["collection"]
+            });
+        }, 100);
+  }
+
+  componentWillMount() {
+    // check local storage & make sure nothing is null
+    // if != null 
+  }
+
   componentDidMount() {
     map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -44,34 +69,26 @@ class Map extends Component {
 
       geocoder.on('result', function(ev) {
           map.getSource('point').setData(ev.result.geometry);
-      });
-      
-      map.addLayer({
-        "id": "route",
-        "type": "line",
-        "source": {
-            "type": "geojson",
-            "data": {
-                "type": "Feature",
-                "properties": {},
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": [
-                        [-122.312119, 47.656260],
-                        [-122.312076, 47.658363]
-                    ]
-                }
-            }
-        },
-        "layout": {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        "paint": {
-            "line-color": "red",
-            "line-width": 8,
-            'line-opacity': 0.5
-        }
+          parseData();
+          /*result.forEach((row) => {
+            map.addLayer({
+              "id": "route",
+              "type": "line",
+              "source": {
+                  "type": "geojson",
+                  "data": row.geometry
+              },
+              "layout": {
+                  "line-join": "round",
+                  "line-cap": "round"
+              },
+              "paint": {
+                  "line-color": "red",
+                  "line-width": 8,
+                  'line-opacity': 0.5
+              }
+            });
+          })*/
       });
     });
   }
