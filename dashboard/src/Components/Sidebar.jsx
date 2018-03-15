@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { ButtonToolbar } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
-
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
+
+import { getData } from '../getData.js';
 
 class Sidebar extends Component {
     constructor(props) {
@@ -12,12 +13,13 @@ class Sidebar extends Component {
         this.state = { profile: 'Select' };
     }
     render() {
-        let profileOptions = ["Select", "Manual Wheelchair", "Power Wheelchair", "Cane"]
+        getData();
+        let profileOptions = ["Select", "Manual Wheelchair", "Power Wheelchair", "Cane"];
         return (
             <div id="sidebar" className="bg-light" ref='sidebar'>
                 <ListGroup>
                     <ListGroupItem className="bg-light">
-                        <p className="text-info"><b>Select User Profile</b></p>
+                        <p id="userprofileins" className="text-info"><b>Select User Profile</b></p>
                         <ButtonToolbar id="userprofile">
                             <DropdownButton title={this.state.profile} id="dropdown-size-medium">
                                 {

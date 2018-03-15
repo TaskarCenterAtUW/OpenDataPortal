@@ -63,8 +63,13 @@ nav .container {
   width: 50px;
 }
 
-#user-profile-info {
-  padding-top: 60px;
+#userprofile {
+  padding-top: 1%;
+}
+
+#userprofileins {
+  padding-top: 20%;
+  padding-bottom: 0%;
 }
 
 #map {
