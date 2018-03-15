@@ -5,7 +5,8 @@ import { MenuItem } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 
-import { getData } from '../getData';
+import { parseData } from '../getData';
+import { result } from '../getData';
 
 class Sidebar extends Component {
     constructor(props) {
@@ -13,7 +14,10 @@ class Sidebar extends Component {
         this.state = { profile: 'Select' };
     }
     render() {
-        getData();
+        // TODO: Move this to a more appropriate place
+        parseData();
+        console.log(result);
+        
         let profileOptions = ["Select", "Manual Wheelchair", "Power Wheelchair", "Cane"];
         return (
             <div id="sidebar" className="bg-light" ref='sidebar'>
