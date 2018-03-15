@@ -9,13 +9,7 @@ import { ListGroupItem } from 'react-bootstrap';
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-<<<<<<< HEAD
-        this.state = {
-            profile: 'User Profile',
-        };
-=======
         this.state = { profile: 'Select' };
->>>>>>> 1921edc80cedf7f192a2880312af2f3b04864e55
     }
     render() {
         let profileOptions = ["Select", "Manual Wheelchair", "Power Wheelchair", "Cane"]
@@ -23,11 +17,7 @@ class Sidebar extends Component {
             <div id="sidebar" className="bg-light" ref='sidebar'>
                 <ListGroup>
                     <ListGroupItem className="bg-light">
-<<<<<<< HEAD
-                        <p className="text-info" id="user-profile-info">Select User Profile</p>
-=======
                         <p className="text-info"><b>Select User Profile</b></p>
->>>>>>> 1921edc80cedf7f192a2880312af2f3b04864e55
                         <ButtonToolbar id="userprofile">
                             <DropdownButton title={this.state.profile} id="dropdown-size-medium">
                                 {
