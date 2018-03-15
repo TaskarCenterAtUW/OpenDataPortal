@@ -5,9 +5,6 @@ import { MenuItem } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 
-import { parseData } from '../getData';
-import { result } from '../getData';
-
 class Sidebar extends Component {
     constructor(props) {
         super(props);
@@ -58,6 +55,10 @@ class Sidebar extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
+        let cache = window.localStorage;
+        cache.setItem("incidents", this.state.incidents);
+        cache.setItem("transport", this.state.transport);
+        cache.setItem("trees", this.state.trees);
     }
 }
 

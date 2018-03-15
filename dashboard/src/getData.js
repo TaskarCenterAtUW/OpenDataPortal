@@ -31,11 +31,12 @@ function parseData() {
             let parsed = geojson.parse(row, {});
             collection["features"].push(parsed);
         });
-        result["collection"] = collection;
-        let cache = window.localStorage;
-        cache.setItem("collection", collection);
-        console.log(localStorage.getItem("collection"));
+        setState(collection)
     })
+}
+
+function setState(collection) {
+    result["collection"] = collection;
 }
 
 export { parseData, result };
