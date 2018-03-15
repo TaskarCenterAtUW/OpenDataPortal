@@ -47,7 +47,6 @@ class Map extends Component {
       geocoder.on('result', function(ev) {
           map.getSource('point').setData(ev.result.geometry);
           parseData();
-          console.log(result);
           /*result.forEach((row) => {
             map.addLayer({
               "id": "route",

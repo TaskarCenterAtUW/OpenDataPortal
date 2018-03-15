@@ -1,9 +1,7 @@
 import * as d3 from "d3";
 import * as geojson from "geojson";
 
-let result = {
-    collection: {}
-}
+let result = {}
 
 function parseData() {
     d3.csv("http://localhost:8000/uw_ped_data.csv", (data) => {
@@ -34,7 +32,10 @@ function parseData() {
             collection["features"].push(parsed);
         });
         result["collection"] = collection;
+        let cache = window.localStorage;
+        cache.setItem("collection", collection);
+        console.log(localStorage.getItem("collection"));
     })
 }
 
-export { parseData, result};
+export { parseData, result };
