@@ -2,10 +2,33 @@ import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from 'mapbox-gl-geocoder';
 
+import { parseData } from '../getData';
+import { result } from '../getData';
+
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFuZXNoc3UiLCJhIjoiY2pkamZpbzZ3MW0ycTJ6cmxtNnJhZ2k4ZCJ9.bzJJ_dSQlZefW6kWSSjlzw';
 var map;
 
 class Map extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
+  getData() {
+    parseData();
+        setTimeout(() => {
+            console.log(result["collection"]);
+            this.setState({
+                collection: result["collection"]
+            });
+        }, 100);
+  }
+
+  componentWillMount() {
+    // check local storage & make sure nothing is null
+    // if != null 
+  }
+
   componentDidMount() {
     map = new mapboxgl.Map({
       container: this.mapContainer,
