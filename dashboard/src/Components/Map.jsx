@@ -7,6 +7,7 @@ var map;
 
 class Map extends Component {
   componentDidMount() {
+    //Map
     map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
@@ -14,16 +15,19 @@ class Map extends Component {
       zoom: 14
     });
 
+    //Search bar
     var geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken
     });
 
     map.addControl(geocoder);
 
+    //Navigation controls
     map.addControl(new mapboxgl.NavigationControl());
 
     map.on('load', () => {
       
+      //Point placed after search
       map.addSource("point", {
         "type": "geojson",
         "data": {
@@ -40,14 +44,15 @@ class Map extends Component {
             "circle-radius": 10,
             "circle-color": "red"
         }
-    });
+      });
 
+      //Change point after search
       geocoder.on('result', function(ev) {
           map.getSource('point').setData(ev.result.geometry);
       });
       
       map.addLayer({
-        "id": "route",
+        "id": "sidewalk",
         "type": "line",
         "source": {
             "type": "geojson",

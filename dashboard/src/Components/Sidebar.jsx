@@ -16,7 +16,7 @@ class Sidebar extends Component {
         return (
             <div id="sidebar" className="bg-light" ref='sidebar'>
                 <ListGroup>
-                    <ListGroupItem className="bg-light">
+                    <ListGroupItem id="user-profile" className="bg-light">
                         <p className="text-info"><b>Select User Profile</b></p>
                         <ButtonToolbar id="userprofile">
                             <DropdownButton title={this.state.profile} id="dropdown-size-medium">
