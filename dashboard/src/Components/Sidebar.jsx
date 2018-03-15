@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ButtonToolbar } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
@@ -10,15 +9,17 @@ import { ListGroupItem } from 'react-bootstrap';
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-        this.state = { profile: 'User Profile' };
+        this.state = {
+            profile: 'User Profile',
+        };
     }
     render() {
         let profileOptions = ["Select...", "Manual Wheelchair", "Power Wheelchair", "Cane"]
         return (
-            <div id="sidebar" className="bg-light">
+            <div id="sidebar" className="bg-light" ref='sidebar'>
                 <ListGroup>
                     <ListGroupItem className="bg-light">
-                        <p className="text-info">Select User Profile</p>
+                        <p className="text-info" id="user-profile-info">Select User Profile</p>
                         <ButtonToolbar id="userprofile">
                             <DropdownButton title={this.state.profile} id="dropdown-size-medium">
                                 {
@@ -54,8 +55,8 @@ class Sidebar extends Component {
     }
 
     handleSubmit() {
-        console.log('m');
-    }
+        console.log('weights submitted');
+    } 
 }
 
 export default Sidebar;

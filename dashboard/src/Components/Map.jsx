@@ -3,24 +3,28 @@ import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from 'mapbox-gl-geocoder';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFuZXNoc3UiLCJhIjoiY2pkamZpbzZ3MW0ycTJ6cmxtNnJhZ2k4ZCJ9.bzJJ_dSQlZefW6kWSSjlzw';
+var map;
 
 class Map extends Component {
   componentDidMount() {
-    this.map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
       center: [-122.3035, 47.6553],
       zoom: 14
     });
 
-    this.map.on('load', () => {
-      var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-      });
-    
-      this.map.addControl(geocoder);
+    var geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken
+    });
+
+    map.addControl(geocoder);
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    map.on('load', () => {
       
-      /*this.map.addSource('single-point', {
+      map.addSource("point", {
         "type": "geojson",
         "data": {
             "type": "FeatureCollection",
@@ -28,39 +32,57 @@ class Map extends Component {
         }
       });
 
-      this.map.addLayer({
-          "id": "point",
-          "source": "single-point",
-          "type": "circle",
-          "paint": {
-              "circle-radius": 10,
-              "circle-color": "red"
-          }
-      });
+      map.addLayer({
+        "id": "point",
+        "source": "point",
+        "type": "circle",
+        "paint": {
+            "circle-radius": 10,
+            "circle-color": "red"
+        }
+    });
 
       geocoder.on('result', function(ev) {
-          this.map.getSource('single-point').setData(ev.result.geometry);
-      });*/
-
-      this.map.addControl(new mapboxgl.NavigationControl());
+          map.getSource('point').setData(ev.result.geometry);
+      });
+      
+      map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": [
+                        [-122.312119, 47.656260],
+                        [-122.312076, 47.658363]
+                    ]
+                }
+            }
+        },
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "red",
+            "line-width": 8,
+            'line-opacity': 0.5
+        }
+      });
     });
   }
   
   componentWillUnmount() {
-    this.map.remove();
+    map.remove();
   }
   
   render() {
-    const style = {
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: '25%',
-      width: '75vw'
-    };
-  
     return (
-      <div id="map" style={style} ref={el => this.mapContainer = el} />
+      <div id="map" ref={el => this.mapContainer = el} />
     );
   }
 }
