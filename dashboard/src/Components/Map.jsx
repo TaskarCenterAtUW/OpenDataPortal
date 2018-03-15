@@ -13,14 +13,16 @@ class Map extends Component {
       zoom: 14
     });
 
+    var geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken
+    });
+
+    this.map.addControl(geocoder);
+    this.map.addControl(new mapboxgl.NavigationControl());
+
+
     this.map.on('load', () => {
-      var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-      });
-    
-      this.map.addControl(geocoder);
-      
-      /*this.map.addSource('single-point', {
+      this.map.addSource('marker', {
         "type": "geojson",
         "data": {
             "type": "FeatureCollection",
@@ -30,26 +32,26 @@ class Map extends Component {
 
       this.map.addLayer({
           "id": "point",
-          "source": "single-point",
+          "source": "marker",
           "type": "circle",
           "paint": {
-              "circle-radius": 10,
-              "circle-color": "red"
+              "circle-radius": 15,
+              "circle-color": "#007cbf"
           }
       });
 
-      geocoder.on('result', function(ev) {
-          this.map.getSource('single-point').setData(ev.result.geometry);
-      });*/
-
-      this.map.addControl(new mapboxgl.NavigationControl());
+      geocoder.on('result', (ev) => {
+        this.map.getSource('marker').setData(ev.result.geometry);
+        let coords = ev.result.geometry["coordinates"];
+        console.log(coords[0] + " " + coords[1] + " " + 0.1)
+      });
     });
   }
-  
+
   componentWillUnmount() {
     this.map.remove();
   }
-  
+
   render() {
     const style = {
       position: 'absolute',
@@ -58,7 +60,7 @@ class Map extends Component {
       left: '25%',
       width: '75vw'
     };
-  
+
     return (
       <div id="map" style={style} ref={el => this.mapContainer = el} />
     );
