@@ -5,7 +5,7 @@ import { MenuItem } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 
-import { getData } from '../getData.js';
+import { getData } from '../getData';
 
 class Sidebar extends Component {
     constructor(props) {
