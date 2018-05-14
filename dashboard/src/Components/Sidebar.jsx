@@ -4,12 +4,44 @@ import { DropdownButton } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
+import Slider, { createSliderWithTooltip } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
+const SliderWithTooltip = createSliderWithTooltip(Slider);
+
+const marks = {
+    0: '0%',
+    100: '100%'
+  };
 
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-        this.state = { profile: 'Select'};
+        this.state = { profile: 'Select', defaultValue: 50, min: 0, max: 100};
     }
+
+    onCrimeChange = (value) => {
+        this.setState({
+            crime: value
+        });
+    }
+
+    onTransportChange = (value) => {
+        this.setState({
+            transport: value
+        });
+    }
+
+    onGeenSpacesChange = (value) => {
+        this.setState({
+            green: value
+        });
+    }
+
+    percentFormatter(v) {
+        return `${v} %`;
+    }
+
     render() {
         let profileOptions = ["Select", "Manual Wheelchair", "Power Wheelchair", "Cane"];
         return (
@@ -29,8 +61,41 @@ class Sidebar extends Component {
                     </ListGroupItem>
                     <ListGroupItem className="bg-light">
                         <p className="text-info"><b>Choose your preferences</b></p>
-                        <p className="text-muted"><i>Assign a weight to each factor (between 0 to 1). The weights must add upto 1.</i></p>
-                        <form onSubmit={(evt) => this.handleSubmit(evt)}>
+                        {/*<p className="text-muted"><i>Assign a weight to each factor (between 0 to 1). The weights must add upto 1.</i></p>*/}
+                        <div className="d-flex item">
+                            <p className="factor">Criminal Incident Reports</p>
+                            <SliderWithTooltip 
+                                defaultValue = {this.state.defaultValue}
+                                onChange={this.onCrimeChange}
+                                tipFormatter={this.percentFormatter}
+                                min={this.state.min}
+                                max={this.state.max}
+                                marks={marks}
+                            />
+                        </div>
+                        <div className="d-flex item">
+                            <p className="factor">Public transport (bus stops)</p>
+                            <SliderWithTooltip 
+                                defaultValue = {this.state.defaultValue}
+                                onChange={this.onTransportChange}
+                                tipFormatter={this.percentFormatter}
+                                min={this.state.min}
+                                max={this.state.max}
+                                marks={marks}
+                            />
+                        </div>
+                        <div className="d-flex item">
+                            <p className="factor">Green Spaces</p>
+                            <SliderWithTooltip 
+                                defaultValue = {this.state.defaultValue}
+                                onChange={this.onGreenSpacesChange}
+                                tipFormatter={this.percentFormatter}
+                                min={this.state.min}
+                                max={this.state.max}
+                                marks={marks}
+                            />
+                        </div>
+                        {/*<form onSubmit={(evt) => this.handleSubmit(evt)}>
                             <div className="d-flex item">
                                 <label className="desc">Criminal Incident Reports</label>
                                 <input type="number" step="0.1" max='1' min='0' className="form-control param" id="criminal-incidents" placeholder="0.5" onInput= {(evt) => this.setState({incidents: evt.target.value})}/>
@@ -46,7 +111,7 @@ class Sidebar extends Component {
                                 onInput= {(evt) => this.setState({trees: evt.target.value})}/>/>
                             </div>
                             <button id="submit" type="submit" value="Submit" min='0' className="btn btn-info">Submit</button>
-                        </form>
+                        </form>*/}
                     </ListGroupItem>
                 </ListGroup>
             </div>
