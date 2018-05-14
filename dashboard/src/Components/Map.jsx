@@ -4,9 +4,6 @@ import MapboxGeocoder from 'mapbox-gl-geocoder';
 import { parseData } from '../getData';
 import { result } from '../getData';
 
-import { parseData } from '../getData';
-import { result } from '../getData';
-
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFuZXNoc3UiLCJhIjoiY2pkamZpbzZ3MW0ycTJ6cmxtNnJhZ2k4ZCJ9.bzJJ_dSQlZefW6kWSSjlzw';
 var map;
 
