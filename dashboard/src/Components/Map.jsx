@@ -68,6 +68,28 @@ class Map extends Component {
         }
       });
 
+      var data = require('./sidewalks.geojson')
+
+      map.addSource('sidewalks', { 
+        "type": "geojson", 
+        "data": data
+      });
+
+      map.addLayer({
+        "id": "sidewalks",
+        "type": "line",
+        "source": "sidewalks",
+        "layout": {
+          "line-join": "round",
+          "line-cap": "round"
+        },
+        "paint": {
+          "line-color": "red",
+          "line-width": 3,
+          "opacity": this.props.crime
+      }
+    });
+
       //Change point after search
       geocoder.on('result', function(ev) {
           map.getSource('point').setData(ev.result.geometry);

@@ -8,11 +8,31 @@ import Sidebar from "./Components/Sidebar";
 import NavBar from "./Components/NavBar"
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      crime: 1,
+      transport: 1,
+      green: 1
+    }
+
+    this.handleCrimeChange = this.handleCrimeChange.bind(this);
+  }
+
   render() {
     return (
       <div>
-        <Map />
-        <Sidebar />
+        <Map 
+          crime={this.state.crime}
+          transport={this.state.transport}
+          crime={this.state.green}
+        />
+        <Sidebar 
+          handleCrimeChange={this.handleCrimeChange}
+          handleTransportChange={this.handleTransportChange}
+          handleGreenSpacesChange={this.handleGreenSpacesChange}
+        />
         <NavBar />
       </div>
     );
@@ -42,6 +62,24 @@ class App extends Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  handleCrimeChange(value) {
+    this.setState({
+      crime: value
+    });
+  }
+
+  handleTransportChange(value) {
+    this.setState({
+      transport: value
+    });
+  }
+
+  handleGreenSpacesChange(value) {
+    this.setState({
+      green: value
+    });
   }
 }
 
