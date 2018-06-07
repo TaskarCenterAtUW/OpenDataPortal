@@ -4,9 +4,6 @@ import MapboxGeocoder from 'mapbox-gl-geocoder';
 import { parseData } from '../getData';
 import { result } from '../getData';
 
-import { parseData } from '../getData';
-import { result } from '../getData';
-
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFuZXNoc3UiLCJhIjoiY2pkamZpbzZ3MW0ycTJ6cmxtNnJhZ2k4ZCJ9.bzJJ_dSQlZefW6kWSSjlzw';
 var map;
 
@@ -32,6 +29,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
+    //Map
     map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
@@ -39,16 +37,19 @@ class Map extends Component {
       zoom: 14
     });
 
+    //Search bar
     var geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken
     });
 
     map.addControl(geocoder);
 
+    //Navigation controls
     map.addControl(new mapboxgl.NavigationControl());
 
     map.on('load', () => {
       
+      //Point placed after search
       map.addSource("point", {
         "type": "geojson",
         "data": {
@@ -65,8 +66,31 @@ class Map extends Component {
             "circle-radius": 10,
             "circle-color": "red"
         }
+      });
+
+      var data = require('./sidewalks.geojson')
+
+      map.addSource('sidewalks', { 
+        "type": "geojson", 
+        "data": data
+      });
+
+      map.addLayer({
+        "id": "sidewalks",
+        "type": "line",
+        "source": "sidewalks",
+        "layout": {
+          "line-join": "round",
+          "line-cap": "round"
+        },
+        "paint": {
+          "line-color": "red",
+          "line-width": 3,
+          "opacity": this.props.crime
+      }
     });
 
+      //Change point after search
       geocoder.on('result', function(ev) {
           map.getSource('point').setData(ev.result.geometry);
           parseData();
