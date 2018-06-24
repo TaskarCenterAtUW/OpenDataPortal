@@ -1,0 +1,2 @@
+# About
+This directory contains the geojson data that has been compiled from processing multiple data sets from the Seattle Department of Transportaion (SDOT). Exploration of this data will be enabled through the OpenPedDataPortal.
